@@ -15,7 +15,7 @@ const containerStyle = {
 };
 const InfiniteScroll = () => {
   const [postList, setPostList] = useState({
-    list: [1, 2, 3, 4],
+    list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
   });
   // tracking on which page we currently are
   const [page, setPage] = useState(1);
@@ -36,13 +36,15 @@ const InfiniteScroll = () => {
     }
   }, []);
 
-  useEffect(() => {
-    // here we simulate adding new posts to List
-    const newList = postList.list.concat([1, 1, 1, 1]);
-    setPostList({
-      list: newList,
-    });
-  }, [page]);
+  // didUpdate
+  // useEffect(() => {
+  //   // here we simulate adding new posts to List
+  //   const newList = postList.list.concat([1, 1, 1, 1]);
+
+  // }, [page]);
+
+  debugger;
+  const newList = postList.list.concat([13]);
 
   // here we handle what happens when user scrolls to Load More div
   // in this case we just update page variable
@@ -64,7 +66,16 @@ const InfiniteScroll = () => {
           );
         })}
         <div className='loading' ref={loader}>
-          <h2>Load More</h2>
+          <h2
+            onClick={() =>
+              setPostList({
+                list: newList,
+              })
+            }
+          >
+            {' '}
+            Load More
+          </h2>
         </div>
       </div>
     </div>
